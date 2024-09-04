@@ -27,7 +27,7 @@ const projectsCards = document.querySelector(".projects__cards");
 
 function renderCard (project) {    
     return `         
-    <div class="card_description">
+    <div class="card__description">
         <span>
             <h1 class="card__title">${project.title}</h1>
             <p class="card__text">${project.description.slice(0, 150)}...</p>
