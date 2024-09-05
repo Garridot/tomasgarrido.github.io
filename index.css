@@ -304,13 +304,12 @@ h3.transition__title, h3.transition__subtitle {
     font-size: var(--font-size-secondary);
 }
 h1.transition__text {
-    font-size: 5rem;
+    font-size: 5rem;    
     white-space: nowrap;
     text-transform: var(--text-transform-primary);
     font-family: var(--font-secondary);
-    transition: all .4s;
+    transition: transform 1s ease-out;    
 }
-
 
 /* ========== Profile Layout ========== */
 .profile {
