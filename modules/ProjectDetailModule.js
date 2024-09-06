@@ -1,5 +1,9 @@
 // modules/ProjectDetailRenderer.js
-import { scrollToSection } from './ScrollModule.js'
+import { scrollToSection } from './AnimationsModule.js'
+
+/**
+ * Module to handle displaying detailed information about a project.
+ */
 export const ProjectDetailRender = (() => {
     let cards;
 
@@ -11,16 +15,21 @@ export const ProjectDetailRender = (() => {
       });
     };
   
-    // Función para desplegar la información detallada del proyecto
-    const addProjectItem = (event, projectsData, imagesData) => {
+    /**
+     * Adds a new div with detailed information about the selected project.
+     *
+     * @param {Event} event - The click event on a project card.
+     * @param {Array} projects - List of available projects.
+     * @param {Array} images - List of image URLs corresponding to the projects.     
+     */
+    const addProjectItem = (event, projects, images) => {
       scrollToSection(event, '.projects__cards');
   
       const clickedCard = event.currentTarget;
-      const cardIndex = parseInt(clickedCard.id, 10) - 1;
-  
-      // Crear elemento con los detalles del proyecto
-      const project = projectsData[cardIndex];
-      const projectImage = imagesData[cardIndex + 1];
+      const cardIndex = parseInt(clickedCard.id, 10) - 1;  
+      
+      const project = projects[cardIndex];
+      const projectImage = images[cardIndex + 1];
   
       const element = document.createElement('div');
       element.className = 'projects__item';
@@ -30,25 +39,36 @@ export const ProjectDetailRender = (() => {
       if (projectsCards) {
         projectsCards.appendChild(element);
       } else {
-        console.error('Contenedor principal de tarjetas no encontrado.');
+        console.error('.projects__card not found.');
       }
   
-      // Agregar evento para el botón de retorno
       const cardReturn = element.querySelector('.projects__item-return');
       if (cardReturn) {
         cardReturn.addEventListener('click', removeProjectItem);
       }
     };
   
-    // Función para eliminar el detalle del proyecto
+    /**
+     * Removes the project detail div.
+     */
     const removeProjectItem = () => {
       const element = document.querySelector('.projects__item');
       if (element) {
         element.remove();
       }
     };
-  
-    // Función para generar el HTML detallado del proyecto
+
+    /**
+     * Generates the HTML to display the details of a project.
+     *
+     * @param {Object} project - The project data to display.
+     * @param {string} project.title - The title of the project.
+     * @param {string} project.description - The full description of the project.
+     * @param {string} project.url - The project's URL.
+     * @param {string} project.skills - List of skills related to the project.
+     * @param {string[]} img - Array of image URLs for the project.
+     * @returns {string} The HTML for the project detail view.
+     */
     const displayProject = (project, img) => {
       const skillsArray = project.skills.split(',');
       const listItems = skillsArray.map(skill => `<li>${skill.trim()}</li>`).join('');

@@ -41,9 +41,17 @@ body {
     background: var(--color-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: all .1s;
 }
-h1,h2,h3,h4,h5,h6,p,a,input {
+h1, h2, h3, h4, h5, h6, p, a, li, label {
     color: var(--color-secondary);
+    transition: all .1s;
+    transition-duration: 0s;
+    transform: translateY(100%) rotateX(-80deg);
+    transform-origin: center top;
+    transform-style: preserve-3d;
+    transition: opacity 0s cubic-bezier(.215,.61,.355,1),transform 0s cubic-bezier(.215,.61,.355,1);
+    opacity: 0;
 }
 
 /* Hide Scrollbar */
@@ -73,12 +81,26 @@ svg.drawn-border {
     fill: none;
 }
 
+.divider {
+    width: 0%;
+    opacity: 0;
+    height: 1px;
+    display: flex;
+    margin: auto;
+    background: var(--color-secondary);
+    transition-duration: 1s;
+}
+
+
 /* ========== HEADER ========== */
 .header {
     position: fixed;
     width: 100%;
     z-index: 5;
     background: var(--color-primary);
+    transition: all .1s;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 /* header Components */
 ul.header__list {
@@ -132,13 +154,7 @@ li.menu__item {
     list-style: none;
     width: fit-content;
 }
-span.divider {
-    width: 100%;
-    height: 2px;
-    display: block;
-    position: relative;
-    background: var(--color-secondary);
-}
+
 /* Menu Typography */
 a.menu__link {
     font-size: 9rem;
@@ -154,6 +170,8 @@ a.menu__link {
     width: 100%;
     height: 100vh;
     position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid;
 }
 /* main background */
 .main__background {
@@ -275,6 +293,13 @@ a.main__link {
     text-decoration: none;
 }
 
+.main__divider {    
+    position: absolute;
+    right: 0;
+    left: 0;
+    transform: rotate(90deg) translate(50%, 50%);    
+}
+
 
 /* ========== Transition Layout ========== */
 .transition {
@@ -308,7 +333,16 @@ h1.transition__text {
     white-space: nowrap;
     text-transform: var(--text-transform-primary);
     font-family: var(--font-secondary);
-    transition: transform 1s ease-out;    
+    transition: transform 1s ease-out !important;
+    opacity: 1 !important;    
+    will-change: transform;
+    position: relative;
+}
+h1.transition__text:nth-child(2), h1.transition__text:nth-child(6) {
+    left: -500px;
+}
+h1.transition__text:nth-child(4) {
+    left: -1500px;
 }
 
 /* ========== Profile Layout ========== */
@@ -416,12 +450,12 @@ section.projects {
     margin: auto;
     height: 100vh;
     position: relative;
+    transition: all .6s ease-out;
 }
 /* Projects Card Components */
 .projects__card {
     width: 100%;  
     display: flex;
-    border-bottom: 1px solid var(--color-border);
     cursor: pointer;
 }
 .projects__card:nth-child(1) {
