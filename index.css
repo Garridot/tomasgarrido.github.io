@@ -99,8 +99,6 @@ svg.drawn-border {
     z-index: 5;
     background: var(--color-primary);
     transition: all .1s;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
 }
 /* header Components */
 ul.header__list {
@@ -139,7 +137,8 @@ section.menu {
     position: fixed;
     z-index: 4;
     background: var(--color-primary);
-    display:none;
+    transform: translateY(100%);
+    transition: all 1s;
 }
 /* Menu Components */
 ul.menu__list {
@@ -446,7 +445,7 @@ section.projects {
 
 /* ========== Projects Cards ========== */
 .projects__cards {
-    width: 95%;
+    width: 98%;
     margin: auto;
     height: 100vh;
     position: relative;
@@ -506,12 +505,13 @@ section.projects {
     display: flex;
     flex-wrap: wrap;
     z-index: 3;
+    transform: translate3d(-105%, 0px, 0px);
+    transition: all .8s ease-out;    
 }
 /* Projects Items Columns and Rows */
 .projects__item--col:nth-child(1), .projects__item--col:nth-child(2){
     width: 100%;
     height: auto;
-    border-bottom: 1px solid;
 } 
 .projects__item--col:nth-child(3), .projects__item--col:nth-child(4){
     width: 50%;
@@ -525,6 +525,22 @@ section.projects {
 }
 .projects__item--col:nth-child(4) {
     padding: 1rem 1rem 0;
+}
+
+.projects__item--col:nth-child(1), .projects__item--col:nth-child(2), .projects__item--col:nth-child(3) {
+    transform: translate3d(-100%, 0px, 0px);
+    opacity: 0;
+    transition: all .8s ease-out;
+}
+.projects__item--col:nth-child(4) {
+    transform: translate3d(100%, 0px, 0px);
+    opacity: 0;
+    transition: all .8s ease-out;
+}
+.projects__item--row {
+    position: relative;
+    transform: translate3d(0px, 0%, 0px);
+    transition: all .5s ease-in-out;
 }
 /* Projects Items Components */
 .projects__item--description {

@@ -54,7 +54,7 @@ export const ProjectDetailRender = (() => {
     const removeProjectItem = () => {
       const element = document.querySelector('.projects__item');
       if (element) {
-        element.remove();
+        setTimeout(()=> {element.remove();}, "2000")        
       }
     };
 
