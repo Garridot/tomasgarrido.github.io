@@ -141,27 +141,45 @@ section.menu {
     transition: all 1s;
 }
 /* Menu Components */
+.menu__container {
+    width: 95%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu__col {
+    width: 100%;
+    height: 100%;
+}
 ul.menu__list {
     height: 100%;
-    width: 55%;
-    margin: 0 auto 0 2rem;
+    width: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 li.menu__item {
     list-style: none;
-    width: fit-content;
+    width: 100%;
+    padding: 1.5rem 0;
 }
-
 /* Menu Typography */
+h1.menu__title{
+    font-size: 1.2rem;
+    font-family: var(--font-primary);
+    font-weight: 100;
+    text-transform: uppercase;
+    padding: 1.5rem 0;
+}
 a.menu__link {
-    font-size: 9rem;
+    display: block;
+    width: 100%;
+    font-size: 2rem;
     font-family: var(--font-primary);
     text-transform: capitalize;
     text-decoration: none;
-    line-height: 1;
-    letter-spacing: 1px;
 }
 
 /* ========== Main Layout ========== */
@@ -726,6 +744,13 @@ h1.transition__text {
 }
 
 @media(max-width:800px) {
+/* MENU */
+h1.menu__title{
+    font-size: 1.2rem;
+}
+a.menu__link {
+    font-size: 1.5rem;
+}
 /* MAIN LAYOUT  */
 .main__background, .main__background--column, .main__container--column {
     width: 100%;
@@ -813,6 +838,13 @@ ul.header__list {
 }
 li.header__item:nth-child(1) {
     width: 40%;        
+}
+/* MENU */
+h1.menu__title{
+    font-size: 1.1rem;
+}
+a.menu__link {
+    font-size: 1.2rem;
 }
 /* MAIN LAYOUT */
 .main__presentation {

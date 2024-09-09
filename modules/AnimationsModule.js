@@ -158,6 +158,7 @@ export const ScrollAnimations = (() => {
         darkModeButton: document.querySelector("#dark-button"),
         menuButton: document.querySelector("#menu-button"),
         menu: document.querySelector(".menu"),
+        menuLinks: document.querySelectorAll(".menu__link"),
         body: document.body,
         dividers: document.querySelectorAll(".divider"),
         projectCardsContainer: document.querySelector(".projects__cards"),
@@ -172,6 +173,13 @@ export const ScrollAnimations = (() => {
     const toggleMenuDisplay = () => {        
         isMenuVisible = !isMenuVisible;
         selectors.menu.style.transform = isMenuVisible ? "translateY(0%)" : "translateY(100%)";
+        if (isMenuVisible){
+            setTimeout(()=>{
+                animateTextElements(selectors.menu.querySelectorAll("h1, li, a"));
+                animateDividers(selectors.menu.querySelectorAll(".divider"));        
+            },"800")
+            
+        }
     };
 
     /**
@@ -305,6 +313,9 @@ export const ScrollAnimations = (() => {
     const init = () => {
         selectors.darkModeButton.addEventListener("click", updateTheme);
         selectors.menuButton.addEventListener("click", toggleMenuDisplay);
+        selectors.menuLinks.forEach(link => {
+            link.addEventListener("click", toggleMenuDisplay);
+        })
 
         selectors.projectCardsContainer.querySelectorAll(".projects__card").forEach(card => {
             card.addEventListener("click", () => { 
