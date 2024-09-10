@@ -161,7 +161,7 @@ export const ScrollAnimations = (() => {
         menuLinks: document.querySelectorAll(".menu__link"),
         body: document.body,
         dividers: document.querySelectorAll(".divider"),
-        projectCardsContainer: document.querySelector(".projects__cards"),
+        projectCardsContainer: document.querySelector(".projects__cards"),   
     };
 
     let isMenuVisible = false;
@@ -260,10 +260,12 @@ export const ScrollAnimations = (() => {
      */
     const applyDisplayItem = () => {      
         const projectItem = document.querySelector(".projects__item");   
-        const itemStrings = document.querySelectorAll(".projects__item--col:nth-child(1), .projects__item--col:nth-child(2), .projects__item--col:nth-child(3)");
-        const itemImage = document.querySelector(".projects__item--col:nth-child(4)");
+        const itemStrings = document.querySelectorAll(".projects__item--col:nth-child(1)");
+        const itemImage = document.querySelector(".projects__item--col:nth-child(2)");
         const itemMainText = projectItem.querySelectorAll("h1, p");
         const itemExtraText = projectItem.querySelectorAll("h6, li, a"); 
+        
+        selectors.projectCardsContainer.querySelectorAll(".projects__card, .divider").forEach(i => i.style.filter = "opacity(0)");
 
         projectItem.style.transform = "translate3d(0%, 0px, 0px)";
 
@@ -293,7 +295,6 @@ export const ScrollAnimations = (() => {
      * Handles the removal animation of the project detail item.
      */
     const applyRemoveItem = () => {
-        const projectItem = document.querySelector(".projects__item");
         const itemRows = document.querySelectorAll(".projects__item--row");        
 
         itemRows.forEach((col, index) => {
@@ -303,8 +304,8 @@ export const ScrollAnimations = (() => {
         });
 
         setTimeout(() => { 
-            projectItem.style.transform = "translate3d(0px, -100%, 0px)";  
-        }, 1000);
+            selectors.projectCardsContainer.querySelectorAll(".projects__card, .divider").forEach(i => i.style.filter = "opacity(1)"); 
+        }, 1200);
     };    
 
     /**
@@ -321,7 +322,7 @@ export const ScrollAnimations = (() => {
             card.addEventListener("click", () => { 
                 setTimeout(applyDisplayItem, 300);
             });
-        });
+        });        
     };
 
     // Public API
