@@ -364,44 +364,47 @@ h1.transition__text:nth-child(4) {
 
 /* ========== Profile Layout ========== */
 .profile {
-    width: var(--width-section);
+    width: 100%;
     margin: 20vh auto 0;
     position: relative;
     height: 100vh;    
 }
 /* Profile Body */
 .profile__body {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.profile__extra-data {
-    display: flex;
-    margin: 2rem auto 0;
-}
-ul.profile__ul {
-    display: flex;
-    flex-wrap: wrap;
-}
-.profile__image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    margin: auto;
 }
 /* Profile Columns and Rows */
 .profile__column:nth-child(1) {
-    width: 100%;
+    width: var(--width-section);
+    margin: auto;
 }
 .profile__column:nth-child(2) {
-    width: 30%;
-    display: flex;
-    justify-content: center;
+    width: var(--width-section);
+    margin: auto;
 }
 .profile__column:nth-child(3) {
-    width: 60%;
+    width: 100%;
+    margin: auto;
 }
 .profile__row {
+    width: 100%;
+    margin: auto;
+    padding: 2rem 0;
+}
+/* Profile elements */
+.profile__extra-data {
     width: var(--width-section);
-    margin: 2rem auto 0;
+    display: flex;
+    margin: auto;
+}
+.profile__subdivision {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+ul.profile__ul {
+    width: 100%;
 }
 /* Profile Typography */
 h1.profile__title--text {
@@ -409,6 +412,7 @@ h1.profile__title--text {
     margin: 0 0 1rem;
 }
 h1.profile__title--text, .profile__body h6 {
+    width: 100%;
     font-family: var(--font-secondary);
     font-size: var(--font-size-primary);
     line-height: var(--line-height-primary);
@@ -422,12 +426,14 @@ h1.profile__title--text, .profile__body h6 {
     font-weight: bold;
 }
 .profile__body p {
-    width: 80%;
+    font-size: 1.7rem;
+    font-weight: 100;
+    line-height: 1.5;
 }
 .profile__li { 
-    list-style: none; 
-    width: 50%;     
+    list-style: none;     
     text-transform: capitalize;
+    font-size: 1.3rem;
 }
 
 
@@ -736,6 +742,13 @@ li.footer__item a {
 h1.transition__text {
     font-size: 4rem;
 }
+/* PROFILE */
+.profile__body p {
+    font-size: 1.4rem;
+}
+.profile__column:nth-child(3) {
+    width: 100%;
+}
 /* PROJECTS ITEMS */
 .projects__item {
     display: block;
@@ -811,17 +824,15 @@ h1.transition__text {
     font-size: 3rem;
 }
 /* PROFILE LAYOUT */
-.profile {
-    margin: 0;
-}
 .profile__body {
-    flex-direction: column;
+    width: 100%;
 }
-.profile__column, .profile__body p {
-    width: 100% !important;
+.profile__subdivision {
+    display: block;
 }
-.profile__extra-data {
-    justify-content: space-between;
+.profile__body p {
+    width: 100%;
+    font-size: 1.2rem;
 }
 /* PROJECTS INTRO */
 .projects__intro--title, .projects__intro--text {
@@ -887,15 +898,12 @@ input.projects__item-return, h6.projects__item--subtitle,
 
 @media(max-width:600px) {
 /* LAYOUTS HEIGTH  */
-.transition, .profile  {
+.transition {
     height: 80vh;
 }
-/* PROFILE LAYOUT */
-.profile__subdivision:nth-child(1) {
-    width: 100%;
-}
-.profile__subdivision:nth-child(2) {
-    display: none;
+/* PROFILE */
+.profile__li {
+    font-size: 1.2rem;
 }
 /* PROJECTS LAYOUT */
 .projects__intro {
@@ -983,8 +991,8 @@ h1.transition__text {
     font-size: 1.5rem;
 }
 /* PROFILE LAYOUT */
-ul.profile__ul {
-    display: block;
+.profile__li {
+    font-size: 1.1rem;
 }
 /* PROJECTS ITEM */
 h1.projects__item--title {

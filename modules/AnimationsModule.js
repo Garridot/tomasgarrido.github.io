@@ -92,6 +92,7 @@ export const ScrollAnimations = (() => {
         if (isElementVisible(profile, 500)) {
             const profileStrings = profile.querySelectorAll("h1, h6, p, li");
             animateTextElements(profileStrings);
+            animateDividers(profile.querySelectorAll(".divider"));
         }
     };
 
