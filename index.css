@@ -188,7 +188,6 @@ a.menu__link {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid;
 }
 /* main background */
 .main__background {
@@ -239,43 +238,46 @@ a.menu__link {
 }
 /* ========== Main Container ========== */
 .main__container {
-    display: flex;
-    position: relative;
     width: 100%;
     height: 100%;
 }
 /* Main Container Columns and Rows */
 .main__container--column {
-    width: 50%;
-    height: 100%;
-}
-.main__container--row {
-    height: 50%;
-    display: flex;
-    align-items: flex-end;
     width: 90%;
     margin: auto;
+    position: relative;
+    height: 100%;
+}
+.main__container--row:nth-child(1) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 .main__container--row:nth-child(2) {
+    width: 100%;
+    height: 100%;
+    display: flex;
     align-items: flex-end;
+    padding: 0 0 0.5rem;
 }
-.main__container--row:nth-child(4) {
-    align-items: flex-end;
-}
+
 /* Main Components  */
 .main__presentation {
-    margin: 2rem 0 0;
+    margin: auto;
 }
 .main__skills {
-    margin: 0 0 1rem;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
+    width: 30%;
 }
 .main__contact {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
-    margin: 0 0 1rem auto;
+    margin: 0 0 0 auto;
+    width: 20%;
 }
 /* Main Typography */
 span.contact-form__link {
@@ -286,18 +288,19 @@ span.contact-form__link {
 p.main__about-text,
 .contact-form__link a {
     text-transform: var(--text-transform-primary);
-    font-weight: bold;
-    font-size: var(--font-size-primary);
+    font-weight: bold;    
     line-height: var(--line-height-primary);
     font-family: var(--font-primary);
 }
+p.main__about-text {
+    font-size: 1.5rem;
+}
 .contact-form__link a {
-    width: fit-content;
     position: relative;
     margin: 2rem 0 0;
     display: block;
     text-decoration: none;
-    z-index: 3;
+    font-size: 1.1rem;
 }
 p.main__tech, 
 a.main__link {
@@ -309,14 +312,6 @@ a.main__link {
     line-height: var(--line-height-secondary);
     text-decoration: none;
 }
-
-.main__divider {    
-    position: absolute;
-    right: 0;
-    left: 0;
-    transform: rotate(90deg) translate(50%, 50%);    
-}
-
 
 /* ========== Transition Layout ========== */
 .transition {
@@ -723,6 +718,18 @@ li.footer__item a {
 
 
 /* ========== Responsive Styles ========== */
+@media(max-width:1200px) {
+/* MAIN LAYOUT */
+p.main__about-text {
+    font-size: 1.2rem;
+}
+.main__skills {
+    width: 40%;
+}
+.main__contact {
+    width: 25%;
+}
+}
 @media(max-width:1100px) {    
     ul.footer__list {
         width: 30%;
@@ -735,8 +742,17 @@ li.footer__item a {
 
 @media(max-width:1000px) {
 /* MAIN LAYOUT */
+p.main__about-text {
+    font-size: 1.1rem;
+}
+.contact-form__link a {
+    font-size: 1rem;
+}
+.main__skills {
+    width: 50%;
+}
 .main__contact {
-    width: 65%;
+    width: 35%;
 }
 /* TRANSITION LAYOUT */
 h1.transition__text {
@@ -794,27 +810,16 @@ a.menu__link {
     font-size: 1.5rem;
 }
 /* MAIN LAYOUT  */
-.main__background, .main__background--column, .main__container--column {
+p.main__about-text, .contact-form__link a {
+    font-size: .9rem;
+}
+p.main__tech {
     width: 100%;
+    margin: 0.2rem 0;
+    font-size: var(--font-size-primary);    
 }
-.main__background--row {
-    width: 50%;
-    height: 50%;
-    margin: auto;
-}
-.main__container--column:nth-child(2) {
-    display: none;
-}
-.main__container--row {
-    width: 95%;
-}
-.main__presentation {
-    margin: 0;
-    width: 70%;
-}
-.main__skills {
-    width: 70%;
-    margin: 0 0 1rem auto;
+.main__contact {
+    width: 45%;
 }
 /* TRANSITION LAYOUT */
 .transition {
@@ -872,15 +877,8 @@ h1.menu__title{
 a.menu__link {
     font-size: 1.2rem;
 }
-/* MAIN LAYOUT */
-.main__presentation {
-    width: 80%;
-}
-.main__skills {
-    width: 70%;        
-}
 /* RESPONIVE TYPOGRAPHY */
-a.header__link, .header__button p.main__about-text, .contact-form__link a {
+a.header__link, .header__button, p.main__about-text, .contact-form__link a {
     font-size: .8rem;
 }
 p.main__tech {
@@ -897,6 +895,21 @@ input.projects__item-return, h6.projects__item--subtitle,
 }
 
 @media(max-width:600px) {
+/* MAIN LAYOUT */
+.main__container--column {
+    width: 95%;
+}
+.main__contact {
+    width: 50%;
+}
+p.main__tech, a.main__link {
+    font-weight: 100;
+}
+a.main__link {
+    width: 100%;
+    margin: 0.2rem 0;
+    text-align: end;
+}
 /* LAYOUTS HEIGTH  */
 .transition {
     height: 80vh;
@@ -929,18 +942,8 @@ h1.card__title, .card__bottom input[type="button"] {
 
 @media(max-width:500px) {
 /* MAIN LAYOUT */
-.main__background--row {
-    width: 70%;
-}
-.main__presentation, .main__skills {
-    width: 100%;
-}
-p.main__about-text, .contact-form__link a, p.main__about-text, .contact-form__link a {
+p.main__about-text, .contact-form__link a {
     font-size: .76rem;
-}
-p.main__tech {
-    width: 50%;
-    font-size: 0.66rem;
 }
 /* FOOTER LAYOUT */
 ul.footer__list {
