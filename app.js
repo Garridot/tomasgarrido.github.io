@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const url = 'https://tomasgarrido-portfolio-dashboard.onrender.com';  
   const data = await DataFetcher.getData(url);    
   // Renderizar la lista de proyectos
-  ProjectRender.renderProjectsList(data);  
+  ProjectRender.renderProjectsList(data); 
+  ProjectRender.renderProjectsCards(data,backupDataImages);  
   // Inicializar el renderizador de detalles del proyecto
   ProjectDetailRender.init(data, backupDataImages);
 

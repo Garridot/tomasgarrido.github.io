@@ -100,10 +100,11 @@ export const ScrollAnimations = (() => {
      * Animates the introductory project section's text elements if the section is visible within the specified threshold.
      */
     const animateProjectsIntro = () => {
-        const projectsIntro = document.querySelector(".projects__intro");
-        if (isElementVisible(projectsIntro, 500)) {
-            const projectStrings = projectsIntro.querySelectorAll("h1, p");
+        const projects = document.querySelector(".projects");
+        if (isElementVisible(projects, 500)) {
+            const projectStrings = projects.querySelectorAll("h1, li, p");
             animateTextElements(projectStrings);
+            animateDividers(projects.querySelectorAll(".divider"));
         }
     };
 
@@ -162,7 +163,8 @@ export const ScrollAnimations = (() => {
         menuLinks: document.querySelectorAll(".menu__link"),
         body: document.body,
         dividers: document.querySelectorAll(".divider"),
-        projectCardsContainer: document.querySelector(".projects__cards"),   
+        projectCardsContainer: document.querySelector(".projects__cards"),  
+        projectListsContainer: document.querySelector(".projects__list"),   
     };
 
     let isMenuVisible = false;
@@ -234,7 +236,7 @@ export const ScrollAnimations = (() => {
             divider.style.background = theme.textColor;
         });
 
-        const projectItem = document.querySelector(".projects__item");
+        const projectItem = document.querySelector(".project__selected");
         if (projectItem) {
             projectItem.style.background = theme.backgroundColor;
         }
@@ -260,13 +262,11 @@ export const ScrollAnimations = (() => {
      * Handles the display animation for the project detail item.
      */
     const applyDisplayItem = () => {      
-        const projectItem = document.querySelector(".projects__item");   
-        const itemStrings = document.querySelectorAll(".projects__item--col:nth-child(1)");
-        const itemImage = document.querySelector(".projects__item--col:nth-child(2)");
+        const projectItem = document.querySelector(".project__selected");   
+        const itemStrings = document.querySelectorAll(".project__selected--col:nth-child(1)");
+        const itemImage = document.querySelector(".project__selected--col:nth-child(2)");
         const itemMainText = projectItem.querySelectorAll("h1, p");
-        const itemExtraText = projectItem.querySelectorAll("h6, li, a"); 
-        
-        selectors.projectCardsContainer.querySelectorAll(".projects__card, .divider").forEach(i => i.style.filter = "opacity(0)");
+        const itemExtraText = projectItem.querySelectorAll("h6, li, a");     
 
         projectItem.style.transform = "translate3d(0%, 0px, 0px)";
 
@@ -286,7 +286,7 @@ export const ScrollAnimations = (() => {
             animateTextElements(itemExtraText); 
         }, 2500);    
 
-        const cardReturn = document.querySelector('.projects__item-return');
+        const cardReturn = document.querySelector('.project__selected-return');
         if (cardReturn) {
             cardReturn.addEventListener('click', applyRemoveItem);
         }
@@ -296,17 +296,18 @@ export const ScrollAnimations = (() => {
      * Handles the removal animation of the project detail item.
      */
     const applyRemoveItem = () => {
-        const itemRows = document.querySelectorAll(".projects__item--row");        
+        const project = document.querySelector(".project__selected")
+        const itemRows = document.querySelectorAll(".project__selected--row");        
 
         itemRows.forEach((col, index) => {
             col.style.transform = "translate3d(0px, -100%, 0px)"; 
             col.style.opacity = 0; 
             col.style.transitionDelay = `${index * 0.01}s`;
         });
+        setTimeout(()=> {
+            project.style.transform = "translate3d(0px, -100%, 0px)";
+        },"500")
 
-        setTimeout(() => { 
-            selectors.projectCardsContainer.querySelectorAll(".projects__card, .divider").forEach(i => i.style.filter = "opacity(1)"); 
-        }, 1200);
     };    
 
     /**
@@ -319,8 +320,13 @@ export const ScrollAnimations = (() => {
             link.addEventListener("click", toggleMenuDisplay);
         })
 
-        selectors.projectCardsContainer.querySelectorAll(".projects__card").forEach(card => {
+        selectors.projectCardsContainer.querySelectorAll(".projects__cards--card").forEach(card => {
             card.addEventListener("click", () => { 
+                setTimeout(applyDisplayItem, 300);
+            });
+        });  
+        selectors.projectListsContainer.querySelectorAll(".project__item").forEach(item => {
+            item.addEventListener("click", () => { 
                 setTimeout(applyDisplayItem, 300);
             });
         });        

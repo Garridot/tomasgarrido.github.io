@@ -4,13 +4,12 @@
   * Module to handle rendering of HTML elements based on data.
   */
 export const ProjectRender = (() => { 
-
   /**
    * Renders a list of projects by creating a card for each project.
    *
    * @param {Array} data - List of projects to render.   
-   */
-  const renderProjectsList = (data) => {    
+   */  
+   const renderProjectsList = (data) => {    
 
     if (!Array.isArray(data) || data.length === 0) {                    
       console.warn('Invalid or empty projects data.');
@@ -21,16 +20,59 @@ export const ProjectRender = (() => {
     const fragment = document.createDocumentFragment(); 
 
     for (let i = 1; i <= lenProjects; i++) {
-      const card = document.createElement('div');
-      card.className = 'projects__card';
+      const card = document.createElement('li');
+      card.className = 'project__item';
       card.id = i;
-      card.innerHTML = renderCard(data[i - 1]);
-      card.style.height = (100 / lenProjects) + '%';
-      fragment.appendChild(card); 
-
-      const divider = document.createElement("span");
+      card.innerHTML = renderItem(data[i - 1]);
+      fragment.appendChild(card);    
+      
+      const divider = document.createElement('span');
       divider.className = "divider";
-      fragment.appendChild(divider);
+      fragment.appendChild(divider); 
+    }
+
+    // Container where the cards will be appended.
+    const projectsList = document.querySelector('.projects__list'); 
+      if (projectsList) {        
+        projectsList.appendChild(fragment);
+      } else {
+        console.error('.projects__list not found.');
+      }
+    };  
+  /**
+   * Generates the HTML content for a project card.
+   *
+   * @param {Object} project - The project data to display on the card.
+   * @param {string} project.title - The title of the project.   
+   * @returns {string} The HTML for the project card.
+   */    
+  const renderItem = (project) => {      
+    return ` 
+    <p class="project__item--text">${project.title}<span></span>2024</p>         
+    `;
+  };
+  /**
+   * Renders a list of projects by creating a card for each project.
+   *
+   * @param {Array} data - List of projects to render.   
+   */  
+  const renderProjectsCards = (data,backupDataImages) => {    
+
+    if (!Array.isArray(data) || data.length === 0) {                    
+      console.warn('Invalid or empty projects data.');
+      return;
+    }
+
+    // const lenProjects = data.length;
+    const fragment = document.createDocumentFragment(); 
+
+    for (let i = 1; i <= 2; i++) {
+      const card = document.createElement('div');
+      card.className = 'projects__cards--card';
+      card.id = i;
+      const projectImage = backupDataImages[i];
+      card.innerHTML = renderCard(data[i - 1],projectImage);
+      fragment.appendChild(card);       
     }
 
     // Container where the cards will be appended.
@@ -38,35 +80,32 @@ export const ProjectRender = (() => {
       if (projectsCards) {        
         projectsCards.appendChild(fragment);
       } else {
-        console.error('.projectsCards not found.');
+        console.error('.projects__cards not found.');
       }
-    };
-  
-    /**
-     * Generates the HTML content for a project card.
-     *
-     * @param {Object} project - The project data to display on the card.
-     * @param {string} project.title - The title of the project.
-     * @param {string} project.description - The description of the project.
-     * @returns {string} The HTML for the project card.
-     */    
-    const renderCard = (project) => {      
-      return `      
-        <div class="card__description">
-          <span>
-            <h1 class="card__title">${project.title}</h1>
-            <p class="card__text">${project.description.slice(0, 150)}...</p>
-          </span>
-        </div>
-        <div class="card__bottom"> 
-          <input type="button" value="+">       
-        </div>        
-      `;
-    };
-  
-    return {
-        renderProjectsList,
-    };
-  })();
+    };  
+  /**
+   * Generates the HTML content for a project card.
+   *
+   * @param {Object} project - The project data to display on the card.
+   * @param {string} project.title - The title of the project.
+   * @param {string} project.description - The description of the project.
+   * @returns {string} The HTML for the project card.
+   */    
+  const renderCard = (project,projectImage) => {      
+    return ` 
+    <div class="projects__cards--title">
+        <p class="projects__card--text">${project.title}<span></span>2023</p>
+    </div>
+    <div class="projects__cards--background">
+        <img src="${projectImage[0]}" alt="" class="projects__cards--img">
+    </div>        
+    `;
+  };  
+
+  return {
+      renderProjectsList,
+      renderProjectsCards,
+  };
+})();
   
   

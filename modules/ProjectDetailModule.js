@@ -6,12 +6,17 @@ import { scrollToSection } from './AnimationsModule.js'
  */
 export const ProjectDetailRender = (() => {
     let cards;
+    let items;
 
     // Inicializar eventos
     const init = (projectsData, imagesData) => {
-      cards = document.querySelectorAll('.projects__card');
+      cards = document.querySelectorAll('.projects__cards--card');
+      items = document.querySelectorAll(".project__item");
       cards.forEach(card => {
-        card.addEventListener('click', (event) => addProjectItem(event, projectsData, imagesData));
+        card.addEventListener('click', (event) => addProjectSelected(event, projectsData, imagesData));
+      }); 
+      items.forEach(item => {
+        item.addEventListener('click', (event) => addProjectSelected(event, projectsData, imagesData));
       });      
     };
   
@@ -22,8 +27,8 @@ export const ProjectDetailRender = (() => {
      * @param {Array} projects - List of available projects.
      * @param {Array} images - List of image URLs corresponding to the projects.     
      */
-    const addProjectItem = (event, projects, images) => {
-      scrollToSection(event, '.projects__cards');
+    const addProjectSelected = (event, projects, images) => {
+      scrollToSection(event, '.projects');
   
       const clickedCard = event.currentTarget;
       const cardIndex = parseInt(clickedCard.id, 10) - 1;  
@@ -32,7 +37,7 @@ export const ProjectDetailRender = (() => {
       const projectImage = images[cardIndex + 1];
   
       const element = document.createElement('div');
-      element.className = 'projects__item';
+      element.className = 'project__selected';
       element.innerHTML = displayProject(project, projectImage);
 
       // Define the background element's theme color. If the "theme" button is in "light mode," then the page is set to dark mode.
@@ -42,29 +47,29 @@ export const ProjectDetailRender = (() => {
         element.querySelectorAll("h1,h6,p,li,a,input").forEach(i=> i.style.color = "var(--color-primary)");
       }         
   
-      const projectsCards = document.querySelector('.projects__cards');
+      const projectsCards = document.querySelector('.projects');
       if (projectsCards) {
         projectsCards.appendChild(element);
       } else {
-        console.error('.projects__card not found.');
+        console.error('.projects not found.');
       }
   
-      const cardReturn = element.querySelector('.projects__item-return');
+      const cardReturn = element.querySelector('.project__selected-return');
       if (cardReturn) {
-        cardReturn.addEventListener('click', removeProjectItem);
+        cardReturn.addEventListener('click', removeProjectSelected);
       }
 
-      const listImages = document.querySelectorAll(".projects__item--list-image img");
+      const listImages = document.querySelectorAll(".project__selected--list-image img");
       listImages.forEach(img => { img.addEventListener("click", (event) => updateMainImage(event)) })
     };
   
     /**
      * Removes the project detail div.
      */
-    const removeProjectItem = () => {
-      const element = document.querySelector('.projects__item');
+    const removeProjectSelected = () => {
+      const element = document.querySelector('.project__selected');
       if (element) {
-        setTimeout(()=> {element.remove();}, "1000")        
+        setTimeout(()=> {element.remove();}, "1500")        
       }
     };
 
@@ -84,45 +89,45 @@ export const ProjectDetailRender = (() => {
       const listTech = skillsArray.map(skill => `<li>${skill.trim()}</li>`).join('');
 
       const listImages = images.map(img => `
-            <div class="projects__item--list-image">
-              <img src="${img}" class="projects__item--img" alt="">
+            <div class="project__selected--list-image">
+              <img src="${img}" class="project__selected--img" alt="">
             </div>
       `).join('');
         
       return `      
-        <div class="projects__item--col">
-          <div class="projects__item--row">
-            <input type="button" class="projects__item-return" value="← Return">
+        <div class="project__selected--col">
+          <div class="project__selected--row">
+            <input type="button" class="project__selected-return" value="← Return">
           </div>        
-          <div class="projects__item--row">
-            <h1 class="projects__item--title">${project.title}</h1>
+          <div class="project__selected--row">
+            <h1 class="project__selected--title">${project.title}</h1>
           </div>        
-          <div class="projects__item--row">
-            <div class="projects__item--description">
-              <h6 class="projects__item--subtitle">Description</h6>
-              <p class="projects__item--text">${project.description}</p>
+          <div class="project__selected--row">
+            <div class="project__selected--description">
+              <h6 class="project__selected--subtitle">Description</h6>
+              <p class="project__selected--text">${project.description}</p>
             </div>
           </div>
-          <div class="projects__item--row">
-            <div class="projects__item--description">
-              <h6 class="projects__item--subtitle">Tech</h6>
-              <ul class="projects__item--list">${listTech}</ul>
+          <div class="project__selected--row">
+            <div class="project__selected--description">
+              <h6 class="project__selected--subtitle">Tech</h6>
+              <ul class="project__selected--list">${listTech}</ul>
             </div>
           </div>
-          <div class="projects__item--row">
-            <div class="projects__item--description">
-              <h6 class="projects__item--subtitle">Links</h6>
-              <a class="projects__item--link" href="${project.url}" target="_blank">${project.url}</a>
+          <div class="project__selected--row">
+            <div class="project__selected--description">
+              <h6 class="project__selected--subtitle">Links</h6>
+              <a class="project__selected--link" href="${project.url}" target="_blank">${project.url}</a>
             </div>
           </div>
         </div>
-        <div class="projects__item--col">
-          <div class="projects__item--row">
-            <div class="projects__item--main-image">
-              <img src="${images[0]}" class="projects__item--img" alt="">
+        <div class="project__selected--col">
+          <div class="project__selected--row">
+            <div class="project__selected--main-image">
+              <img src="${images[0]}" class="project__selected--img" alt="">
             </div>
           </div>
-          <div class="projects__item--row">
+          <div class="project__selected--row">
             ${listImages}
           </div>
         </div>
@@ -138,8 +143,8 @@ export const ProjectDetailRender = (() => {
     const updateMainImage = (event) => {
 
       let imageSelected = event.currentTarget;
-      const listImages = document.querySelectorAll(".projects__item--list-image img"); 
-      const mainImage = document.querySelector(".projects__item--main-image img");
+      const listImages = document.querySelectorAll(".project__selected--list-image img"); 
+      const mainImage = document.querySelector(".project__selected--main-image img");
 
       listImages.forEach(img => {
         img.style.filter = "contrast(1)";
