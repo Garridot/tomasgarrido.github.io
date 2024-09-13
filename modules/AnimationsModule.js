@@ -126,10 +126,13 @@ export const ScrollAnimations = (() => {
      */
     const animateContact = () => {
         const contact = document.querySelector(".contact");
+        const footer = document.querySelector("footer");
         if (isElementVisible(contact, 500)) {
             const contactStrings = contact.querySelectorAll("h1, p, label");
+            const footerStrings = footer.querySelectorAll("li, a");
             animateTextElements(contactStrings);
-        }
+            animateTextElements(footerStrings)
+        }        
     };
 
     /**
