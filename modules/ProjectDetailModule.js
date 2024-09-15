@@ -37,7 +37,7 @@ export const ProjectDetailRender = (() => {
       const projectImage = images[cardIndex + 1];
   
       const element = document.createElement('div');
-      element.className = 'project__selected';
+      element.className = 'project__selected flex space-between';
       element.innerHTML = displayProject(project, projectImage);
 
       // Define the background element's theme color. If the "theme" button is in "light mode," then the page is set to dark mode.
@@ -97,26 +97,26 @@ export const ProjectDetailRender = (() => {
       return `      
         <div class="project__selected--col">
           <div class="project__selected--row">
-            <input type="button" class="project__selected-return" value="← Return">
+            <input type="button" class="project__selected-return header__text" value="← Return">
           </div>        
           <div class="project__selected--row">
-            <h1 class="project__selected--title">${project.title}</h1>
+            <h1 class="project__selected--title title__text">${project.title}</h1>
           </div>        
           <div class="project__selected--row">
-            <div class="project__selected--description">
-              <h6 class="project__selected--subtitle">Description</h6>
+            <div class="project__selected--description grid">
+              <h6 class="project__selected--subtitle header__text">Description</h6>
               <p class="project__selected--text">${project.description}</p>
             </div>
           </div>
           <div class="project__selected--row">
-            <div class="project__selected--description">
-              <h6 class="project__selected--subtitle">Tech</h6>
-              <ul class="project__selected--list">${listTech}</ul>
+            <div class="project__selected--description grid ">
+              <h6 class="project__selected--subtitle header__text">Tech</h6>
+              <ul class="project__selected--list flex wrap">${listTech}</ul>
             </div>
           </div>
           <div class="project__selected--row">
-            <div class="project__selected--description">
-              <h6 class="project__selected--subtitle">Links</h6>
+            <div class="project__selected--description grid">
+              <h6 class="project__selected--subtitle header__text">Links</h6>
               <a class="project__selected--link" href="${project.url}" target="_blank">${project.url}</a>
             </div>
           </div>
@@ -127,7 +127,7 @@ export const ProjectDetailRender = (() => {
               <img src="${images[0]}" class="project__selected--img" alt="">
             </div>
           </div>
-          <div class="project__selected--row">
+          <div class="project__selected--row flex space-between">
             ${listImages}
           </div>
         </div>

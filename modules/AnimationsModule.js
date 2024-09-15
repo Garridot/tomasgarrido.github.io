@@ -90,7 +90,7 @@ export const ScrollAnimations = (() => {
     const animateProfile = () => {
         const profile = document.querySelector(".profile");
         if (isElementVisible(profile, 500)) {
-            const profileStrings = profile.querySelectorAll("h1, h6, p, li");
+            const profileStrings = profile.querySelectorAll("h1, h6, p");
             animateTextElements(profileStrings);
             animateDividers(profile.querySelectorAll(".divider"));
         }
@@ -102,7 +102,7 @@ export const ScrollAnimations = (() => {
     const animateProjectsIntro = () => {
         const projects = document.querySelector(".projects");
         if (isElementVisible(projects, 500)) {
-            const projectStrings = projects.querySelectorAll("h1, li, p");
+            const projectStrings = projects.querySelectorAll("h1, p");
             animateTextElements(projectStrings);
             animateDividers(projects.querySelectorAll(".divider"));
         }
@@ -128,7 +128,7 @@ export const ScrollAnimations = (() => {
         const contact = document.querySelector(".contact");
         const footer = document.querySelector("footer");
         if (isElementVisible(contact, 500)) {
-            const contactStrings = contact.querySelectorAll("h1, p, label");
+            const contactStrings = contact.querySelectorAll("h1, p, label, input");
             const footerStrings = footer.querySelectorAll("li, a");
             animateTextElements(contactStrings);
             animateTextElements(footerStrings)
@@ -269,7 +269,7 @@ export const ScrollAnimations = (() => {
         const itemStrings = document.querySelectorAll(".project__selected--col:nth-child(1)");
         const itemImage = document.querySelector(".project__selected--col:nth-child(2)");
         const itemMainText = projectItem.querySelectorAll("h1, p");
-        const itemExtraText = projectItem.querySelectorAll("h6, li, a");     
+        const itemExtraText = projectItem.querySelectorAll("h6, input, a");     
 
         projectItem.style.transform = "translate3d(0%, 0px, 0px)";
 
@@ -350,7 +350,7 @@ export const startAnimations = (() => {
      */
     const animateHeader = () => {
     const header = document.querySelector("header");
-    const headerStrings = header.querySelectorAll("a, li");
+    const headerStrings = header.querySelectorAll("a, input");
     animateTextElements(headerStrings);
     };
 
@@ -359,7 +359,7 @@ export const startAnimations = (() => {
      */
     const animateMain = () => {
         const main = document.querySelector(".main");
-        const mainStrings = main.querySelectorAll("p, a");
+        const mainStrings = main.querySelectorAll("h1,p, a");
         animateTextElements(mainStrings);
     };
 

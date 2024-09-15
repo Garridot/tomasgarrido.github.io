@@ -48,7 +48,7 @@ export const ProjectRender = (() => {
    */    
   const renderItem = (project) => {      
     return ` 
-    <p class="project__item--text">${project.title}<span></span>2024</p>         
+    <p class="project__item--text list__text flex space-between">${project.title}<span></span>2024</p>         
     `;
   };
   /**
@@ -68,7 +68,7 @@ export const ProjectRender = (() => {
 
     for (let i = 1; i <= 2; i++) {
       const card = document.createElement('div');
-      card.className = 'projects__cards--card';
+      card.className = 'projects__cards--card flex space-between';
       card.id = i;
       const projectImage = backupDataImages[i];
       card.innerHTML = renderCard(data[i - 1],projectImage);
@@ -94,7 +94,7 @@ export const ProjectRender = (() => {
   const renderCard = (project,projectImage) => {      
     return ` 
     <div class="projects__cards--title">
-        <p class="projects__card--text">${project.title}<span></span>2023</p>
+        <p class="projects__card--text grid list__text">${project.title}<span></span>2023</p>
     </div>
     <div class="projects__cards--background">
         <img src="${projectImage[0]}" alt="" class="projects__cards--img">
@@ -102,9 +102,9 @@ export const ProjectRender = (() => {
     `;
   };  
 
-  return {
-      renderProjectsList,
+  return {      
       renderProjectsCards,
+      renderProjectsList,
   };
 })();
   
