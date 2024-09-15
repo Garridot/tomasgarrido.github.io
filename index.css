@@ -350,7 +350,7 @@ h1.transition__text:nth-child(2), h1.transition__text:nth-child(6) {
     left: -500px;
 }
 h1.transition__text:nth-child(4) {
-    left: -1500px;
+    left: -900px;
 }
 
 /* ========== Profile Layout ========== */
