@@ -520,7 +520,6 @@ p.project__selected--text, .project__selected--list li, .project__selected--link
 .contact__body { 
     width: 50%; 
 }
-
 .contact__lead { 
     margin: .5rem 0; 
 }
@@ -566,6 +565,17 @@ p.project__selected--text, .project__selected--list li, .project__selected--link
     margin: .2rem 0;       
 }
 
+.contact__poster {
+    width: 40%;
+    margin: auto;
+}
+.contact__title{  
+    line-height: 1;
+    text-align: center;
+}
+.contact__text.list__text {
+    text-align: center;
+}
 
 /* ========== Footer Layout ========== */
 footer {
@@ -686,6 +696,20 @@ ul.footer__list {
     .main__contact {
         width: 35%;
     }
+
+    .contact {        
+        flex-direction: column-reverse;
+    }
+    .contact__body {
+        width: 90%;
+        margin: auto;
+        margin-top: 0;
+    }
+    .contact__poster {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 800px) {
@@ -732,6 +756,10 @@ ul.footer__list {
     }
     p.projects__card--text {        
         margin: 0.5rem 0;
+    }
+
+    .contact__body {
+        width: 100%;
     }
 
     ul.footer__list {
