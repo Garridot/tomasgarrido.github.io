@@ -564,6 +564,10 @@ p.project__selected--text, .project__selected--list li, .project__selected--link
 .contact__form label { 
     margin: .2rem 0;       
 }
+.contact__form-message h5 {
+    transform: none !important;
+    opacity: 1 !important;
+}
 
 .contact__poster {
     width: 40%;
