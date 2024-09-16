@@ -1,5 +1,5 @@
 // modules/ProjectDetailRenderer.js
-import { scrollToSection } from './AnimationsModule.js'
+import { scrollToSection } from './ScrollEventsModule.js'
 
 /**
  * Module to handle displaying detailed information about a project.
