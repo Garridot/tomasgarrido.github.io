@@ -7,38 +7,46 @@ export const DataFetcher = (() => {
       {
           "id": 1,
           "title": "Football Players Chart",
-          "skills": "Python,Django Rest Framework,Flask,Pandas,JSON web token,BS4,Javascript",
+          "skills": "Python,Django Rest Framework,Flask,Pandas,JSON Web Token,Beautiful Soup,Javascript",
+          "labels": "API-Web Services Development,Data Analytics,Web Scraping",
           "description": `Developed a RESTful API with security & authentication protocols using JWT for authentication
           and authorization during data storage.
           ● Automated collecting and cleaning of 16,080 daily data points using Pandas, streamlining data
-          management.
-          ● Developed a web service that enabled users to explore and comprehend data seamlessly
-          through interactive graphs and tables to elevate user engagement`,
+          management.`,
+          "link_project": "https://football-players-charts.onrender.com/",
+          "link_github": "https://github.com/Garridot/football-players-stats-api",
       },
       {
           "id": 2,
           "title": "Ruins of Versailles",
           "skills": "Python,Django Rest Framework,Javascript",
+          "labels": "API/Web Services Development, E-commerce Project",
           "description": `Developed a RESTful API for a shop's e-commerce platform.
           ● Implemented multi-currency functionality, dynamically displaying product values in Argentine
           pesos and US dollars, keeping the product values updated.
           ● Worked with PayPal API for secure and convenient transactions.
           `,
+          "link_project": "https://ruins-of-versailles-7rbc.onrender.com/",
+          "link_github": "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project",
       },
       {
           "id": 3,
           "title": "Inflation Calculator",
           "skills": "Python,Redis,Django,Websockets,Celery",
+          "labels": "API/Web Services Development,",
           "description": `app that allows the user to calculate the accumulated inflation over two periods of time, based the consumer price index (CPI). Only Argentina’s inflation data are available.`,
+          "link_github": "https://github.com/Garridot/inflation_calculator",
       },
       {
           "id": 4,
           "title": "Email Center API",
           "skills": "Python,Redis,Django,Websockets,Celery",
+          "labels": "API Services Development,",
           "description": `Implemented an Identity and Access Management System for a task management platform.
           ● Implemented tasks asynchronously with Redis and Celery, improving background task
           optimization.
           ● Worked with WebSockets to implement chats in live time, improving user communication`,
+          "link_github": "https://github.com/Garridot/portfolio-email-center-api",
       }
   ] 
 
@@ -78,14 +86,14 @@ export const DataFetcher = (() => {
 
 
 export const backupDataImages = {
-    "1":["https://raw.githubusercontent.com/Garridot/tomasgarrido-/main/static/media/project__1.jpg",],
+    "1":[
+      "/media/project1%231.jpg",
+      "/media/project1%232.png",
+      "/media/project1%233.png",      
+    ],
     "2":[        
-            "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project/raw/main/project_images/image__1.png",            
-            "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project/raw/main/project_images/image__2.png",
-            "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project/raw/main/project_images/image__3.png",
-            "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project/raw/main/project_images/image__5.png",
-        ],
-    "3": ["https://raw.githubusercontent.com/Garridot/tomasgarrido-/main/static/media/project__3.jpg"],
-    "4": ["https://raw.githubusercontent.com/Garridot/tomasgarrido-/main/static/media/project__4.jpg"],
-
+      "/media/project2%231.png",            
+      "/media/project2%232.png",
+      "/media/project2%233.png",
+      ],
 }  

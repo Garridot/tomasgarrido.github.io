@@ -7,7 +7,7 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
     // State object to centralize the current state of the module
     const state = {
         isMenuVisible: false,
-        isDefaultTheme: true,
+        isDefaultTheme: false,
     };
 
     // Element selectors
@@ -28,7 +28,7 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
      */
     const toggleMenuDisplay = () => {
         state.isMenuVisible = !state.isMenuVisible;
-        selectors.menu.style.transform = state.isMenuVisible ? "translateY(0%)" : "translateY(100%)";
+        selectors.menu.style.clipPath = state.isMenuVisible ? "circle(150% at 100% 0)" : "circle(0% at 100% 0)";
         if (state.isMenuVisible) {
             setTimeout(() => {
                 animateTextElements(selectors.menu.querySelectorAll("h1, li, a"));
@@ -40,28 +40,24 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
     /**
      * Updates the theme between dark and light modes, modifying various styles.
      */
-    const updateTheme = () => {
-        const elementsToStyle = document.querySelectorAll(
-            "h1, h2, h3, h4, h5, h6, p, a, input[type='button'], li, label"
-        );
-        const svgPath = document.querySelector("path");
-        const submitButton = document.querySelector(".contact__form input[type='submit']");
+    const updateTheme = () => {   
+        
+        const lightColor = "#fcf0ec";
+        const darkColor  = "#131519";
 
         const themeConfig = state.isDefaultTheme
             ? {
                 buttonLabel: "light mode",
-                backgroundColor: "var(--color-secondary)",
-                textColor: "var(--color-primary)",
-                svgStroke: "var(--color-primary)",
+                backgroundColor: darkColor,
+                textColor: lightColor,                
             }
             : {
                 buttonLabel: "dark mode",
-                backgroundColor: "var(--color-primary)",
-                textColor: "var(--color-secondary)",
-                svgStroke: "var(--color-secondary)",
+                backgroundColor: lightColor,
+                textColor: darkColor,               
             };
 
-        applyTheme(themeConfig, elementsToStyle, svgPath, submitButton);
+        applyTheme(themeConfig);
         state.isDefaultTheme = !state.isDefaultTheme;
     };
 
@@ -69,23 +65,12 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
      * Applies the specified theme styles to the page elements.
      * Centralized to avoid repetition.
      */
-    const applyTheme = (theme, elements, svgPath, submitButton) => {
+    const applyTheme = (theme) => {
+        const root = document.documentElement;
         selectors.darkModeButton.value = theme.buttonLabel;
-        [selectors.body, selectors.header, selectors.menu].forEach(el => {
-            el.style.background = theme.backgroundColor;
-        });
-        selectors.dividers.forEach(divider => divider.style.background = theme.textColor);
-        document.querySelectorAll(".project__selected").forEach(item => {
-            item.style.background = theme.backgroundColor;
-        });
-        elements.forEach(el => el.style.color = theme.textColor);
-        svgPath.style.stroke = theme.svgStroke;
-        styleSubmitButton(submitButton, theme.textColor, theme.backgroundColor);
-    };
-
-    const styleSubmitButton = (button, backgroundColor, textColor) => {
-        button.style.background = backgroundColor;
-        button.style.color = textColor;
+        root.style.setProperty('--color-background', theme.backgroundColor);
+        root.style.setProperty('--color-text', theme.textColor);
+        
     };
 
     /**
@@ -96,7 +81,6 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
         const itemStrings = projectItem.querySelectorAll(".project__selected--col:nth-child(1)");
         const itemMainText = projectItem.querySelectorAll("h1, p");
         const itemExtraText = projectItem.querySelectorAll("h6, input, a"); 
-        const itemImage = projectItem.querySelector(".project__selected--col:nth-child(2)");
 
         projectItem.style.transform = "translate3d(0%, 0px, 0px)";
 
@@ -106,8 +90,6 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
                 element.style.transform = "translate3d(0%, 0px, 0px)";
                 element.style.opacity = 1;
             });
-            itemImage.style.transform = "translate3d(0%, 0px, 0px)";
-            itemImage.style.opacity = 1;
         }, 1200);  
 
         // Additional text elements animation
@@ -136,20 +118,53 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
     };
 
     /**
+     * Allow change of the main image.
+     * @param {object} imageSelected - The image selected to view in grand size.
+     * @param {NodeList} listImages - The list of images to select.
+     * @param {object} mainImage - The current image is set in grand size.
+     */ 
+     const updateMainImage = (project,event) => {
+
+        console.log(project,event.src)
+
+        let imageSelected = event;
+        const listImages  = project.querySelectorAll(".projects__thumbnail img");
+        const mainImage  = project.querySelector(".projects__background img");
+  
+        listImages.forEach(img => {
+          img.style.filter = "contrast(1)";
+          if (img = imageSelected) {
+              img.style.filter = "contrast(0.3)";
+              mainImage.src = imageSelected.src;
+          }
+      })
+      }
+
+    /**
      * Initializes click event listeners for menu, dark mode, and project cards.
      */
     const init = () => {
-        selectors.darkModeButton.addEventListener("click", updateTheme);
+        // selectors.darkModeButton.addEventListener("click", updateTheme);
         selectors.menuButton.addEventListener("click", toggleMenuDisplay);
         selectors.menuLinks.forEach(link => link.addEventListener("click", toggleMenuDisplay));
 
         const projectItems = [
-            ...selectors.projectCardsContainer.querySelectorAll(".projects__cards--card"),
-            ...selectors.projectListsContainer.querySelectorAll(".project__item"),
+            ...selectors.projectListsContainer.querySelectorAll(".projects__list--row"),
         ];
         projectItems.forEach(item => {
             item.addEventListener("click", () => setTimeout(applyDisplayItem, 300));
         });
+
+        const projectCards = [
+            ...selectors.projectCardsContainer.querySelectorAll(".projects__card"),
+        ];
+
+        projectCards.forEach(card => {
+            card.querySelectorAll(".projects__thumbnail img").forEach(img => {
+                img.addEventListener("click", () => updateMainImage(card,img))
+            })              
+        });
+
     };
 
     // Public API

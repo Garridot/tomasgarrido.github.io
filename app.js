@@ -5,10 +5,13 @@ import { startAnimations } from './modules/AnimationsModule.js'
 import { validateForm } from './modules/ContactFormModule.js'
 import { gradientLiquidAnimation } from './modules/GradientLiquidModule.js'
 import { ScrollAnimations } from './modules/ScrollEventsModule.js'
-import { clickEventAnimations } from './modules/clickEventsModule.js'
+import { clickEventAnimations } from './modules/ClickEventsModule.js'
 
 
 document.addEventListener('DOMContentLoaded', async () => {   
+  const liquidMotionEffect = gradientLiquidAnimation();
+  liquidMotionEffect.init();
+  
   startAnimations.init();
 
   // ScrollAnimations.init();
@@ -27,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   // const clickEvents = clickEventAnimations();
   clickEventAnimations.init(); 
 
-  const liquidMotionEffect = gradientLiquidAnimation();
-  liquidMotionEffect.init();
 
 
   const formSubmit = validateForm();

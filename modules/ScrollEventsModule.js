@@ -28,7 +28,7 @@ export const ScrollAnimations = (() => {
         marqueeText.forEach((text, index) => {
             text.style.transform = `translate3d(${index === 1 ? -marquee : marquee}px, 0, 0)`;
         });
-    };
+    }; 
 
     // Register sections with their respective animations
     const sections = [        
@@ -36,7 +36,7 @@ export const ScrollAnimations = (() => {
             element: document.querySelector(".transition"),
             textSelector: "h3",
             dividerSelector: ".divider",
-            animate: (section) => applyAnimations(section, "h3", ".divider"),
+            animate: (section) => applyAnimations(section, "h1, h3", ".divider"),
         },
         {
             element: document.querySelector(".profile"),
@@ -48,7 +48,7 @@ export const ScrollAnimations = (() => {
             element: document.querySelector(".projects"),
             textSelector: "h1, p",
             dividerSelector: ".divider",
-            animate: (section) => applyAnimations(section, "h1, p", ".divider"),
+            animate: (section) => applyAnimations(section, "h1, p, a", ".divider"),
         },
         {
             element: document.querySelector(".projects__cards"),
@@ -61,23 +61,30 @@ export const ScrollAnimations = (() => {
             textSelector: "h1, p, label, input",
             dividerSelector: ".divider",
             animate: (section) => {
-                applyAnimations(section, "h1, p, label, input",);
-                const footer = document.querySelector("footer");
-                if (footer) {
-                    animateTextElements(footer.querySelectorAll("a"));
-                }
+                applyAnimations(section, "h1, p, label, input, a",);                
             },
         }
     ];
 
+    const backgroundHeader = () => {
+        const header = document.querySelector("header");
+
+        if (isElementVisible(sections[0].element, 500)) {
+            header.style.background = "var(--color-background)";
+        }else {
+            header.style.background = "";
+        }
+    }
+  
     // Unified scroll event handler
     const handleScroll = () => {
-        sections.forEach(({ element, animate }) => {
-            if (isElementVisible(element, SCROLL_THRESHOLD)) {
+        sections.forEach(({ element, animate}, index) => {
+            if (isElementVisible(element, index === 0 ? 300 : SCROLL_THRESHOLD)) {
                 animate(element);
             }
         });
         animateMarqueeEffect();  // Marquee effect runs independently
+        backgroundHeader();
     };
 
     // Initialization function

@@ -43,9 +43,9 @@ export const gradientLiquidAnimation = () => {
         y3 = Math.max(0, Math.min(100, y3));
 
         gradientBackground.style.background = `
-        radial-gradient(circle at ${x1}% ${y1}%, rgba(255, 192, 203, 0.8), transparent),
-        radial-gradient(circle at ${x2}% ${y2}%, rgba(144, 238, 144, 0.8), transparent),
-        radial-gradient(circle at ${x3}% ${y3}%, rgba(173, 216, 230, 0.8), transparent)
+        radial-gradient(circle at ${x1}% ${y1}%, rgba(255, 192, 203), transparent),
+        radial-gradient(circle at ${x2}% ${y2}%, rgba(144, 238, 144), transparent),
+        radial-gradient(circle at ${x3}% ${y3}%, rgba(173, 216, 230), transparent)
         `;
     // Request the next frame if the element is still visible.
     animationFrameId = requestAnimationFrame(animateBackground);
@@ -64,16 +64,18 @@ export const gradientLiquidAnimation = () => {
     const observerCallback = (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Start the animation when the element is visible.
-                if (!animationFrameId) {
-                    animateBackground();
-                }
-            } else {
-                // Stop the animation when the element is not visible.
+                // Stop the animation when the element is visible.
                 if (animationFrameId) {
                     cancelAnimationFrame(animationFrameId);
                     animationFrameId = null; // Reset the animation frame id
                 }
+
+            } else {
+                // Start the animation when the element is not visible.
+                if (!animationFrameId) {
+                    animateBackground();
+                }
+
             }
         });
     };
@@ -84,11 +86,11 @@ export const gradientLiquidAnimation = () => {
     const init = () => {
         const observerOptions = {
             root: null, // Use the viewport as the root
-            threshold: 0.1 // Trigger when at least 10% of the element is visible
+            threshold: 0.2 // Trigger when at least 10% of the element is visible
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        observer.observe(gradientBackground);
+        observer.observe(document.querySelector(".wrapper"));
     };
 
     return {init}

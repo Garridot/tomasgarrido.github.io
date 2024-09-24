@@ -1,6 +1,3 @@
-// modules/ProjectDetailRenderer.js
-import { scrollToSection } from './ScrollEventsModule.js'
-
 /**
  * Module to handle displaying detailed information about a project.
  */
@@ -9,12 +6,8 @@ export const ProjectDetailRender = (() => {
     let items;
 
     // Inicializar eventos
-    const init = (projectsData, imagesData) => {
-      cards = document.querySelectorAll('.projects__cards--card');
-      items = document.querySelectorAll(".project__item");
-      cards.forEach(card => {
-        card.addEventListener('click', (event) => addProjectSelected(event, projectsData, imagesData));
-      }); 
+    const init = (projectsData, imagesData) => {      
+      items = document.querySelectorAll(".projects__list--row");      
       items.forEach(item => {
         item.addEventListener('click', (event) => addProjectSelected(event, projectsData, imagesData));
       });      
@@ -27,8 +20,7 @@ export const ProjectDetailRender = (() => {
      * @param {Array} projects - List of available projects.
      * @param {Array} images - List of image URLs corresponding to the projects.     
      */
-    const addProjectSelected = (event, projects, images) => {
-      scrollToSection(event, '.projects');
+    const addProjectSelected = (event, projects, images) => {     
   
       const clickedCard = event.currentTarget;
       const cardIndex = parseInt(clickedCard.id, 10) - 1;  
@@ -38,14 +30,7 @@ export const ProjectDetailRender = (() => {
   
       const element = document.createElement('div');
       element.className = 'project__selected flex space-between';
-      element.innerHTML = displayProject(project, projectImage);
-
-      // Define the background element's theme color. If the "theme" button is in "light mode," then the page is set to dark mode.
-      let theme = document.querySelector(".header__button").value;
-      if (theme === 'light mode'){
-        element.style.background = "var(--color-secondary)";
-        element.querySelectorAll("h1,h6,p,li,a,input").forEach(i=> i.style.color = "var(--color-primary)");
-      }         
+      element.innerHTML = displayProject(project, projectImage);  
   
       const projectsCards = document.querySelector('.projects');
       if (projectsCards) {
@@ -57,10 +42,7 @@ export const ProjectDetailRender = (() => {
       const cardReturn = element.querySelector('.project__selected-return');
       if (cardReturn) {
         cardReturn.addEventListener('click', removeProjectSelected);
-      }
-
-      const listImages = document.querySelectorAll(".project__selected--list-image img");
-      listImages.forEach(img => { img.addEventListener("click", (event) => updateMainImage(event)) })
+      }      
     };
   
     /**
@@ -85,14 +67,11 @@ export const ProjectDetailRender = (() => {
      * @returns {string} The HTML for the project detail view.
      */
     const displayProject = (project, images) => {
-      const skillsArray = project.skills.split(',');
-      const listTech = skillsArray.map(skill => `<li>${skill.trim()}</li>`).join('');
+      const labelsArray = project.labels.split(',');
+      const listlabels = labelsArray.map(skill => `<li class="list__text">${skill.trim()}</li>`).join('');
 
-      const listImages = images.map(img => `
-            <div class="project__selected--list-image">
-              <img src="${img}" class="project__selected--img" alt="">
-            </div>
-      `).join('');
+      const skillsArray = project.skills.split(',');
+      const listTech = skillsArray.map(skill => `<li class="list__text">${skill.trim()}</li>`).join('');
         
       return `      
         <div class="project__selected--col">
@@ -105,7 +84,7 @@ export const ProjectDetailRender = (() => {
           <div class="project__selected--row">
             <div class="project__selected--description grid">
               <h6 class="project__selected--subtitle header__text">Description</h6>
-              <p class="project__selected--text">${project.description}</p>
+              <p class="project__selected--text body__text">${project.description}</p>
             </div>
           </div>
           <div class="project__selected--row">
@@ -115,45 +94,20 @@ export const ProjectDetailRender = (() => {
             </div>
           </div>
           <div class="project__selected--row">
+            <div class="project__selected--description grid ">
+              <h6 class="project__selected--subtitle header__text">Labels</h6>
+              <ul class="project__selected--list flex wrap">${listlabels}</ul>
+            </div>
+          </div>
+          <div class="project__selected--row">
             <div class="project__selected--description grid">
               <h6 class="project__selected--subtitle header__text">Links</h6>
-              <a class="project__selected--link" href="${project.url}" target="_blank">${project.url}</a>
+              <a class="project__selected--link list__text" href="${project.link_github}" target="_blank">View Github</a>
             </div>
           </div>
-        </div>
-        <div class="project__selected--col">
-          <div class="project__selected--row">
-            <div class="project__selected--main-image">
-              <img src="${images[0]}" class="project__selected--img" alt="">
-            </div>
-          </div>
-          <div class="project__selected--row flex space-between">
-            ${listImages}
-          </div>
-        </div>
+        </div>        
       `;
-    };
-
-    /**
-     * Allow change of the main image.
-     * @param {object} imageSelected - The image selected to view in grand size.
-     * @param {NodeList} listImages - The list of images to select.
-     * @param {object} mainImage - The current image is set in grand size.
-     */ 
-    const updateMainImage = (event) => {
-
-      let imageSelected = event.currentTarget;
-      const listImages = document.querySelectorAll(".project__selected--list-image img"); 
-      const mainImage = document.querySelector(".project__selected--main-image img");
-
-      listImages.forEach(img => {
-        img.style.filter = "contrast(1)";
-        if (img = imageSelected) {
-            img.style.filter = "contrast(0.3)";
-            mainImage.src = imageSelected.src;
-        }
-    })
-    }
+    };    
   
     return {
       init,

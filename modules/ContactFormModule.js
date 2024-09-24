@@ -77,7 +77,7 @@ export const validateForm = () => {
   const displayResponseMessage = (sanitizedData) => {
     var message = document.createElement("div");
     message.className = "contact__form-message";
-    message.innerHTML = `<h5>Thanks for your message ${sanitizedData.email}! I will try to respond to you as soon as possible.</h5>`;
+    message.innerHTML = `<h5 class="list__text">Thanks for your message ${sanitizedData.email}! I will try to respond to you as soon as possible.</h5>`;
     
     document.querySelector(".contact__form").appendChild(message); 
   } 

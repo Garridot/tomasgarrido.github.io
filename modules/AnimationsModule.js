@@ -39,6 +39,9 @@ export const startAnimations = (() => {
         setTimeout(() => {
             animateElements(selectors.dividers, animateDividers);
         }, timings.dividerDelay);
+        setTimeout(()=> {
+            document.querySelector("#animated-path").style.animation = "draw .6s linear forwards"
+        }, timings.dividerDelay)
     };
 
     // Public API
