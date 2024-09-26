@@ -1,16 +1,16 @@
 /* === Fonts === */
 @font-face {
     font-family: "NeueMontreal-Regular"; 
-    src: url('/fonts/NeueMontreal/NeueMontreal-Regular.otf') format('opentype');
+    src: url('./fonts/NeueMontreal/NeueMontreal-Regular.otf') format('opentype');
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Noto-Sans-Mono-ExtraBold';
-      src:  url('/fonts/Noto-Sans-Mono-ExtraBold/Noto-Sans-Mono-ExtraBold.ttf.woff') format('woff'),
+      src:  url('./fonts/Noto-Sans-Mono-ExtraBold/Noto-Sans-Mono-ExtraBold.ttf.woff') format('woff'),
       url('/fonts/Noto-Sans-Mono-ExtraBold.ttf.svg#Noto-Sans-Mono-ExtraBold') format('svg'),
-      url('/fonts/Noto-Sans-Mono-ExtraBold.ttf.eot'),
-      url('/fonts/Noto-Sans-Mono-ExtraBold.eot?#iefix') format('embedded-opentype'); 
+      url('./fonts/Noto-Sans-Mono-ExtraBold.ttf.eot'),
+      url('./fonts/Noto-Sans-Mono-ExtraBold.eot?#iefix') format('embedded-opentype'); 
       font-weight: normal;
       font-style: normal;
       font-display: swap;

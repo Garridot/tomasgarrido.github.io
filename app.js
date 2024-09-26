@@ -4,8 +4,8 @@ import { ProjectDetailRender } from './modules/ProjectDetailModule.js'
 import { startAnimations } from './modules/AnimationsModule.js'
 import { validateForm } from './modules/ContactFormModule.js'
 import { gradientLiquidAnimation } from './modules/GradientLiquidModule.js'
-import { ScrollAnimations } from './modules/ScrollEventsModule.js'
-import { clickEventAnimations } from './modules/ClickEventsModule.js'
+import { ScrollAnimations } from './modules/ScrollEventModule.js'
+import { clickEventAnimations } from './modules/ClickEventModule.js'
 
 
 document.addEventListener('DOMContentLoaded', async () => {   
@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   liquidMotionEffect.init();
   
   startAnimations.init();
-
-  // ScrollAnimations.init();
 
   ScrollAnimations.init()
 
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Initialize the project details renderer
   ProjectDetailRender.init(data, backupDataImages);
 
-  // const clickEvents = clickEventAnimations();
   clickEventAnimations.init(); 
 
 
