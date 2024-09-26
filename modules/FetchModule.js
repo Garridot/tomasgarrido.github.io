@@ -78,13 +78,13 @@ export const DataFetcher = (() => {
 
 export const backupDataImages = {
     "1":[
-      "/media/project1%231.jpg",
-      "/media/project1%232.png",
-      "/media/project1%233.png",      
+      "./media/project1%231.jpg",
+      "./media/project1%232.png",
+      "./media/project1%233.png",      
     ],
     "2":[        
-      "/media/project2%231.png",            
-      "/media/project2%232.png",
-      "/media/project2%233.png",
+      "./media/project2%231.png",            
+      "./media/project2%232.png",
+      "./media/project2%233.png",
       ],
 }  
