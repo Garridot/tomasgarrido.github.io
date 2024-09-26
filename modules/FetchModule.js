@@ -9,10 +9,7 @@ export const DataFetcher = (() => {
           "title": "Football Players Chart",
           "skills": "Python,Django Rest Framework,Flask,Pandas,JSON Web Token,Beautiful Soup,Javascript",
           "labels": "API-Web Services Development,Data Analytics,Web Scraping",
-          "description": `Developed a RESTful API with security & authentication protocols using JWT for authentication
-          and authorization during data storage.
-          ● Automated collecting and cleaning of 16,080 daily data points using Pandas, streamlining data
-          management.`,
+          "description": `The project involves extracting, cleaning, visualizing, and saving data on athletes' performance. It consists of APIs that carry out operations independently and communicate with one another. Data extraction is performed using BeautifulSoup (bs4) and Pandas, API, and authentication are handled with Django Rest, and the frontend is developed using JavaScript and graph.js.`,
           "link_project": "https://football-players-charts.onrender.com/",
           "link_github": "https://github.com/Garridot/football-players-stats-api",
       },
@@ -21,10 +18,7 @@ export const DataFetcher = (() => {
           "title": "Ruins of Versailles",
           "skills": "Python,Django Rest Framework,Javascript",
           "labels": "API/Web Services Development, E-commerce Project",
-          "description": `Developed a RESTful API for a shop's e-commerce platform.
-          ● Implemented multi-currency functionality, dynamically displaying product values in Argentine
-          pesos and US dollars, keeping the product values updated.
-          ● Worked with PayPal API for secure and convenient transactions.
+          "description": `Developed a RESTful API for an e-commerce platform of a store, implementing multi-currency functionality to dynamically display product values in Argentine pesos and US dollars, and keeping the product values updated. Transactions are processed using PayPal.
           `,
           "link_project": "https://ruins-of-versailles-7rbc.onrender.com/",
           "link_github": "https://github.com/Garridot/Ruins-of-Versailles_Ecommerce-Project",
@@ -34,18 +28,15 @@ export const DataFetcher = (() => {
           "title": "Inflation Calculator",
           "skills": "Python,Redis,Django,Websockets,Celery",
           "labels": "API/Web Services Development,",
-          "description": `app that allows the user to calculate the accumulated inflation over two periods of time, based the consumer price index (CPI). Only Argentina’s inflation data are available.`,
+          "description": `The app enables users to calculate accumulated inflation based on the consumer price index (CPI) for Argentina only.`,
           "link_github": "https://github.com/Garridot/inflation_calculator",
       },
       {
           "id": 4,
-          "title": "Email Center API",
+          "title": "IAM System Project",
           "skills": "Python,Redis,Django,Websockets,Celery",
           "labels": "API Services Development,",
-          "description": `Implemented an Identity and Access Management System for a task management platform.
-          ● Implemented tasks asynchronously with Redis and Celery, improving background task
-          optimization.
-          ● Worked with WebSockets to implement chats in live time, improving user communication`,
+          "description": `The project aimed to create a robust Identity and Access Management (IAM) system using Django. This system would offer strong user authentication, authorization, and security features for a task management platform. The IAM system would handle tasks asynchronously with Redis and Celery and use WebSockets to enable real-time chats.`,
           "link_github": "https://github.com/Garridot/portfolio-email-center-api",
       }
   ] 
