@@ -23,14 +23,14 @@ export const gradientLiquidAnimation = () => {
      */
     const liquidMotionEffect = () => {
         // Generate random movements for the three radial-gradients.
-        x1 += getRandomMovement(-2, 2);
-        y1 += getRandomMovement(-2, 2);
+        x1 += getRandomMovement(-5, 5);
+        y1 += getRandomMovement(-5, 5);
         
-        x2 += getRandomMovement(-2, 2);
-        y2 += getRandomMovement(-2, 2);
+        x2 += getRandomMovement(-5, 5);
+        y2 += getRandomMovement(-5, 5);
         
-        x3 += getRandomMovement(-2, 2);
-        y3 += getRandomMovement(-2, 2);
+        x3 += getRandomMovement(-5, 5);
+        y3 += getRandomMovement(-5, 5);
         
         // Limit the positions so that they do not leave the screen.
         x1 = Math.max(0, Math.min(100, x1));

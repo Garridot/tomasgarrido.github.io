@@ -134,7 +134,7 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
         listImages.forEach(img => {
           img.style.filter = "contrast(1)";
           if (img = imageSelected) {
-              img.style.filter = "contrast(0.3)";
+              img.style.filter = "contrast(0.6)";
               mainImage.src = imageSelected.src;
           }
       })

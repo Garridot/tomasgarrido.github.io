@@ -352,7 +352,9 @@ p.main__tech, a.main__link {
     flex-direction: row-reverse;
     margin: 5rem 0;
 }
-
+.profile__row {
+    margin: 3rem 0;
+}
 /* Profile elements */
 ul.profile__ul {
     width: 100%;
@@ -457,6 +459,9 @@ li.projects__tech-item.body__text {
     border-radius: 20px;
     cursor: default;
 }
+.projects__thumbnail:nth-child(1) img.projects__image {
+    filter: contrast(0.6);
+}
 /* Projects Typography */
 .projects__title h1 {
     line-height: var(--line-height-secondary);
@@ -537,6 +542,7 @@ input.project__selected-return {
 a.project__selected--link.list__text {
     text-decoration: underline;
 }
+
 
 /* ========== Contact Layout ========== */
 /* Contact Layout */
