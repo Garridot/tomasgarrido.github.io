@@ -234,6 +234,12 @@ li.menu__item {
     width: 100%;
     padding: 1.5rem 0;
 }
+.menu__kjh {
+    transition: all .2s;
+}
+.menu__kjh:hover {
+    transform: translate(10px, 0px);
+}
 /* Menu Typography */
 h1.menu__title{
     padding: 1.5rem 0;
@@ -241,9 +247,11 @@ h1.menu__title{
 }
 a.menu__link {
     display: block;
-    text-transform: uppercase;
+    text-transform: uppercase;    
 }
-
+a.menu__link:hover {
+    color: #aaa;
+}
 /* ========== Background Gradient Layout ========== */ 
 .gradient__background {
     z-index: -1;    
@@ -385,7 +393,7 @@ li.profile__li {
     margin: .2rem;
 }
 li.profile__li:last-child {
-    transform: rotate(2deg);
+    transform: rotate(2deg) translate(0px, 5px);
 }
 
 .profile__li p.marquee__text {
@@ -426,6 +434,9 @@ h1.profile__title--text, .profile__body h6 {
 }
 /* Projects Cards */
 /* Projects Cards Columns and Rows */
+.projects__card {
+    margin: 0rem 0.5rem;
+}
 .projects__container {
     width: 100%;
 }
@@ -471,13 +482,14 @@ li.projects__tech-item.body__text {
     max-width: 100%;
     height: auto;   
     cursor: pointer; 
+    border-radius: 6px;
 }
 .projects__background .projects__image {
     border-radius: 20px;
     cursor: default;
 }
-.projects__thumbnail:nth-child(1) img.projects__image {
-    filter: contrast(0.6);
+.projects__thumbnail img.projects__image:hover {
+    filter: contrast(0.8)
 }
 /* Projects Typography */
 .projects__title h1 {
@@ -809,6 +821,9 @@ li.contact__col {
         height: 200px;
     }
 
+    .projects__list--col {       
+        width: 50%;
+    }
 
     p.projects__card--text {        
         margin: 0.5rem 0;

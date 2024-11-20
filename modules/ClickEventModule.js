@@ -123,19 +123,15 @@ import { animateDividers, animateTextElements  } from './AnimationsModule.js'
      * @param {NodeList} listImages - The list of images to select.
      * @param {object} mainImage - The current image is set in grand size.
      */ 
-     const updateMainImage = (project,event) => {
-
-        console.log(project,event.src)
+     const updateMainImage = (project,event) => {        
 
         let imageSelected = event;
         const listImages  = project.querySelectorAll(".projects__thumbnail img");
         const mainImage  = project.querySelector(".projects__background img");
   
-        listImages.forEach(img => {
-          img.style.filter = "contrast(1)";
-          if (img = imageSelected) {
-              img.style.filter = "contrast(0.6)";
-              mainImage.src = imageSelected.src;
+        listImages.forEach(img => { 
+          if (img = imageSelected) {            
+            mainImage.src = imageSelected.src;
           }
       })
       }
