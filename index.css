@@ -124,7 +124,7 @@ li {
     list-style: none;
 }
 .title__text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: var(--line-height-primary);
     text-transform: var(--text-transform-primary);
     font-weight: bold;
@@ -258,7 +258,8 @@ a.menu__link:hover {
 }
 .blurred-bg {
     position: absolute;
-    width: 100%;
+    width: 50%;
+    right: 0;
     height: 100%;
     transition: background 0.1s linear;
     clip-path: circle(25% at 50% 50%);
@@ -291,7 +292,7 @@ a.menu__link:hover {
 
 /* Main Components  */
 .main__presentation {
-    margin: auto;
+    width: 60%;
 }
 .main__skills, .main__contact {
     margin: 0;
@@ -659,7 +660,7 @@ li.contact__col {
         height: auto;
     }
     .title__text {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     .body__text {
         font-size: 1.3rem;
@@ -681,7 +682,7 @@ li.contact__col {
         width: 30%;
     }
     .contact-form__link a {        
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 
     .transition__header {
@@ -736,8 +737,20 @@ li.contact__col {
     .body__text {
         font-size: 1.2rem;
     }
+    .blurred-bg {
+        width: 100%;
+    }
+    .main__presentation {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
     .main__contact {
         width: 35%;
+    }
+
+    span.contact-form__link {
+        margin: auto;
     }
 
     .profile__container {
@@ -789,7 +802,7 @@ li.contact__col {
 
 @media (max-width: 800px) {
     .title__text {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     .body__text {
         font-size: 1.1rem;
@@ -802,7 +815,7 @@ li.contact__col {
         width: 95%;
     }
     .contact-form__link a {
-        font-size: .9rem;
+        font-size: 1.2rem;
     }
     .main__skills {       
         width: 50%;
@@ -869,14 +882,14 @@ li.contact__col {
         margin-top: 10vh;
     }
     .title__text {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
     .body__text {
         font-size: 1rem;
     }
 
     .contact-form__link a {
-        font-size: .8rem;
+        font-size: 1.2rem;
     }
     .main__skills {
         display: none;
