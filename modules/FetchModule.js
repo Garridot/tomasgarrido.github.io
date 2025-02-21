@@ -9,7 +9,7 @@ export const DataFetcher = (() => {
           "title": "Football Players Chart",
           "skills": "Python,Django Rest Framework,Flask,Pandas,JSON Web Token,Beautiful Soup,Javascript",
           "labels": "API-Web Services Development,Data Analytics,Web Scraping",
-          "description": `The project involves extracting, cleaning, visualizing, and saving data on athletes' performance. It consists of APIs that carry out operations independently and communicate with one another. Data extraction is performed using BeautifulSoup (bs4) and Pandas, API, and authentication are handled with Django Rest, and the frontend is developed using JavaScript and graph.js.`,
+          "description": `The project involves extracting, cleaning, visualizing, and saving data on athletes' performance. It consists of APIs that carry out operations independently and communicate with one another. Data extraction is performed using BeautifulSoup and Pandas, API, and authentication are handled with Django Rest, and the frontend is developed using JavaScript and graph.js.`,
           "link_project": "https://football-players-charts.onrender.com/",
           "link_github": "https://github.com/Garridot/football-players-stats-api",
       },
